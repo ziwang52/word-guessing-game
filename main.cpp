@@ -1,0 +1,64 @@
+//zi wang
+//lab9 out
+//words game
+#include <iostream>
+#include <ctime>
+#include "WordGame.h"
+#include "graph1.h"
+
+using namespace std;
+
+int main()
+{
+  //Variable Declaration/Initialization
+  int rand_no = 0;
+  string fn;
+  char repeat = 'y';
+  WordGame WordGame;
+
+  //Display graphics
+  displayGraphics();
+
+  //Initialize random # generator
+  srand(time(0));
+
+  //Run program as many times as desired
+  do
+  {
+
+    //Generate random #
+    rand_no = rand() % 1149;
+
+    //Prompt for fn
+    cout << "Enter filename that contains words: ";
+    cin >> fn;
+
+    //Set the filename
+    WordGame.setFileName(fn);
+
+    //Set the word
+    WordGame.setWord(rand_no);
+
+    //Draw the scene
+    WordGame.draw();
+    WordGame.play();
+    //Get the word
+    string temp = WordGame.getWord();
+
+    //Display the actual word
+    cout << "Random word is: " << temp << endl;
+
+    cout << "Repeat? (y/n): ";
+    cin >> repeat;
+
+    //Clear screen
+    system("cls");
+    clearGraphics();
+
+
+
+  } while ((repeat == 'y') || (repeat == 'Y'));
+
+  return 0;
+}
+
